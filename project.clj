@@ -27,6 +27,7 @@
                 :source-paths ["src" "example_src"]
 
                 :figwheel {:open-urls ["http://localhost:3449/showcase.html"]}
+                           
 
                 :compiler {:main example.showcase
                            :asset-path "example/js/out"
@@ -48,17 +49,33 @@
                                                 :depends-on #{:common}}}}}
 
                ;; the "workflow" topic
-               {:id "workflow-dev"
+               ; {:id "workflow-dev"
+               ;  :source-paths ["src" "tutorial_src"]
+
+               ;  :figwheel {:open-urls ["http://localhost:3449/workflow.html"]}
+
+               ;  :compiler {:main onyx-tutorial.workflow
+               ;             :asset-path "tutorial/js/out"
+               ;             :output-to "resources/public/tutorial/js/workflow.js"
+               ;             :output-dir "resources/public/tutorial/js/out"
+               ;             :source-map-timestamp true
+               ;             :preloads [devtools.preload]}}
+
+               ;; the "catalog" topic
+               {:id "catalog-dev"
                 :source-paths ["src" "tutorial_src"]
 
-                :figwheel {:open-urls ["http://localhost:3449/workflow.html"]}
+                :figwheel {:open-urls ["http://localhost:3449/catalog.html"]}
 
-                :compiler {:main onyx-tutorial.workflow
+                :compiler {:main onyx-tutorial.catalog
                            :asset-path "tutorial/js/out"
-                           :output-to "resources/public/tutorial/js/workflow.js"
+                           :output-to "resources/public/tutorial/js/catalog.js"
                            :output-dir "resources/public/tutorial/js/out"
                            :source-map-timestamp true
                            :preloads [devtools.preload]}}]}
+
+
+               
 
   :figwheel {:css-dirs ["resources/public/css"]}
 

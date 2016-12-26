@@ -2,7 +2,6 @@
   (:require [goog.dom :as gdom]
             [onyx-blueprint.api :as api]))
 
-(enable-console-print!)
 
 (def components
   [{:component/id ::title
@@ -17,7 +16,8 @@
      [:p "This page displays default UI components available to Onyx Blueprint. You configure components with EDN. And you configure the layout of those components with EDN. The rendering engine does the rest."]
      [:p "Onyx Blueprint is rendering this page. For best results, follow along in the " [:code "example.showcase"] " source."]]}
 
-   {:component/id ::text-subhead
+
+   {:component/id ::text-subhead-tw
     :component/type :blueprint/html
     :content/tag :h2
     :content/text "Text elements"}
@@ -202,12 +202,28 @@
     :component/type :blueprint/auditor
     :content/label "Code analysis"
     :link/evaluations {:workflow ::user-code-ex}}
-   ])
-   
+
+   {:component/id ::test-subhead
+    :component/type :blueprint/html
+    :content/tag :h2
+    :content/text "Test Section"}
+
+   {:component/id ::test-intro
+    :component/type :blueprint/html
+    :content/hiccup
+     [:div
+      [:p "Given some test text"]]}])
+
+
+
 (def sections
   [{:section/id ::top-section
     :section/layout [[::title]
                      [::leadin]]}
+
+   {:section/id ::drews-test-section
+    :section/layout [[::test-subhead]
+                     [::test-intro]]}
 
    {:section/id ::text-section
     :section/layout [[::text-subhead]
@@ -243,7 +259,7 @@
    {:section/id ::validation-section
     :section/layout [[::validation-subhead]
                      [::validation-intro]
-                     [::validation]]}
-   ])
+                     [::validation]]}])
+   
 
 (api/render-tutorial! components sections (gdom/getElement "app"))
